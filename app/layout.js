@@ -1,33 +1,22 @@
 import './globals.css';
-import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
-
-const grotesk = localFont({
+const sligoil = localFont({
   src: [
     {
-      path: './fonts/Grotesk-02Mince.woff',
+      path: './fonts/Sligoil-Micro.woff2',
       weight: '100',
     },
     {
-      path: './fonts/Grotesk-03Regular.woff',
-      weight: '400',
+      path: './fonts/Sligoil-MicroMedium.woff2',
+      weight: '500',
     },
     {
-      path: './fonts/Grotesk-04Gras.woff',
+      path: './fonts/Sligoil-MicroBold.woff2',
       weight: '900',
     },
   ],
-  variable: '--font-grotesk',
+  variable: '--font-sligoil',
 });
 
 export const metadata = {
@@ -38,11 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${sligoil.variable} antialiased`}>{children}</body>
     </html>
   );
 }
