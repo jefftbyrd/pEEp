@@ -3,12 +3,12 @@ import { useRef, useState } from 'react';
 
 let animationController;
 
-export default function App() {
-  const [file, setFile] = useState(null);
+export default function moduleOne() {
+  const [file, setFile] = useState(null); // holds the file
   const canvasRef = useRef();
   const audioRef = useRef();
   const source = useRef();
-  const analyzer = useRef();
+  const analyzer = useRef(); // the analyzer node
 
   const handleAudioPlay = () => {
     let audioContext = new AudioContext();
@@ -51,22 +51,32 @@ export default function App() {
   };
 
   return (
-    <div className="">
-      <h1 className="text-4xl font-sligoil">module one</h1>
-      <div>
-        <input
-          type="file"
-          onChange={({ target: { files } }) => files[0] && setFile(files[0])}
-        />
+    <div className="w-fit mx-auto mt-30">
+      <h1 className="">module one</h1>
+      <div className="">
+        <div className="flex gap-5">
+          <label className="">Upload an audio file:</label>
+          <input
+            type="file"
+            id="fileInput"
+            onChange={({ target: { files } }) => files[0] && setFile(files[0])}
+          />
+        </div>
         {file && (
           <audio
             ref={audioRef}
             onPlay={handleAudioPlay}
             src={window.URL.createObjectURL(file)}
             controls
+            className="my-5"
           />
         )}
-        <canvas ref={canvasRef} width={500} height={200} className="border-1" />
+        <canvas
+          ref={canvasRef}
+          width={500}
+          height={200}
+          className="border-1 mt-10"
+        />
       </div>
     </div>
   );
