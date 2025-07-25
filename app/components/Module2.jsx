@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 
 let animationController;
 
-export default function moduleOne() {
+export default function Module2() {
   const [file, setFile] = useState(null); // holds the audio file
   const canvasRef = useRef();
   const audioRef = useRef();
@@ -62,7 +62,7 @@ export default function moduleOne() {
 
   return (
     <div className="w-fit mx-auto mt-30">
-      <h1 className="">module one</h1>
+      <h2 className="">module 2</h2>
       <div className="">
         <div className="flex gap-5">
           <label className="">Upload an audio file:</label>
