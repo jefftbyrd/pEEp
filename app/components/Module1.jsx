@@ -61,8 +61,11 @@ export default function Module1() {
   };
 
   return (
-    <div className="w-fit mx-auto mt-30">
-      <h2 className="">module 1</h2>
+    <div className="w-full mt-30">
+      <div>
+        <h2 className="">module 1</h2>
+        <h3 className="">Bars</h3>
+      </div>
       <div className="">
         <div className="flex gap-5">
           <label className="">Upload an audio file:</label>
@@ -84,8 +87,8 @@ export default function Module1() {
         <canvas
           ref={canvasRef}
           width={1000}
-          height={700}
-          className="border-1 mt-10"
+          // height={700}
+          className="border-1 mt-10 w-full aspect-3/2"
         />
       </div>
     </div>
