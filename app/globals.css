@@ -31,9 +31,17 @@ h1 {
 }
 
 h2 {
-  @apply font-black text-5xl mb-10;
+  @apply font-black text-5xl mb-3;
+}
+
+h3 {
+  @apply font-thin text-lg mb-5 italic;
 }
 
 input::file-selector-button {
   @apply bg-purple-900 text-white border-1 border-white/30 px-4 py-2 rounded cursor-pointer hover:bg-purple-600 mr-3 uppercase tracking-widest font-black;
+}
+
+a {
+  @apply underline text-blue-300;
 }
