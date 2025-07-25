@@ -27,6 +27,10 @@ body {
 }
 
 h1 {
+  @apply font-black text-9xl mb-10;
+}
+
+h2 {
   @apply font-black text-5xl mb-10;
 }
 
