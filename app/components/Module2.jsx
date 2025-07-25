@@ -1,4 +1,4 @@
-// from tutorial at https://www.telerik.com/blogs/adding-audio-visualization-react-app-using-web-audio-api
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
 
 'use client';
 import { useRef, useState } from 'react';
@@ -36,20 +36,22 @@ export default function Module2() {
     const bufferLength = analyzer.current.frequencyBinCount;
     const songData = new Uint8Array(bufferLength);
     analyzer.current.getByteTimeDomainData(songData);
-    const bar_width = 3; // the width of each rectangle
+    // const bar_width = 3; // the width of each rectangle
     let start = 0;
     const ctx = canvasRef.current.getContext('2d'); // prepare our canvas context for 2d rendering
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-    ctx.fillStyle = 'rgb(200 200 200)';
+    ctx.fillStyle = 'rgb(0 0 0)';
     ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+
     // Begin the path
     ctx.lineWidth = 2;
-    ctx.strokeStyle = 'rgb(0 0 0)';
+    // ctx.strokeStyle = 'rgb(255 255 255)';
     ctx.beginPath();
     // Draw each point in the waveform
     const sliceWidth = canvasRef.current.width / bufferLength;
     let x = 0; // Initialize x variable
     for (let i = 0; i < bufferLength; i++) {
+      // const scaledHeight = (songData[i] / 255) * canvasRef.current.height;
       const v = songData[i] / 128.0;
       const y = v * (canvasRef.current.height / 2);
 
@@ -60,6 +62,17 @@ export default function Module2() {
       }
 
       x += sliceWidth;
+      let gradient = ctx.createLinearGradient(
+        // create a linear gradient that spans the entire canvas and store it in the gradient variable
+        0,
+        0,
+        canvasRef.current.width,
+        canvasRef.current.height,
+      );
+      gradient.addColorStop(0.2, '#2392f5'); // add three color stops to the gradient using the addColorStop method
+      gradient.addColorStop(0.5, '#fe0095');
+      gradient.addColorStop(1.0, 'purple');
+      ctx.strokeStyle = gradient;
     }
     ctx.lineTo(canvasRef.current.width, canvasRef.current.height / 2);
     ctx.stroke();
@@ -91,9 +104,9 @@ export default function Module2() {
         )}
         <canvas
           ref={canvasRef}
-          // width={1000}
-          // height={700}
-          className="border-1 mt-10 w-full aspect-3/2"
+          width={1000}
+          height={500}
+          className="border-1 mt-10"
         />
       </div>
     </div>
